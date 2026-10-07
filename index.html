@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7fb" />
+    <title>ImageCompare — See every detail</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="ImageCompare home">
+          <span class="brand-mark" aria-hidden="true">
+            <span></span><span></span>
+          </span>
+          <span>ImageCompare</span>
+        </a>
+        <div class="topbar-note">
+          <span class="status-dot"></span>
+          <span>Runs entirely in your browser</span>
+        </div>
+      </header>
+
+      <section class="hero">
+        <p class="eyebrow">Visual diff tool</p>
+        <h1>See every detail.<br /><em>Side by side.</em></h1>
+        <p class="hero-copy">
+          Upload two images and slide between them to spot every change, pixel
+          by pixel.
+        </p>
+      </section>
+
+      <section class="upload-grid" aria-label="Upload images">
+        <article class="upload-card upload-card--before">
+          <div class="card-heading">
+            <div>
+              <span class="step">01</span>
+              <h2>First Image</h2>
+            </div>
+            <span class="image-badge">First</span>
+          </div>
+          <label class="dropzone" id="beforeDropzone" for="beforeInput">
+            <input id="beforeInput" type="file" accept="image/*" />
+            <span class="upload-icon" aria-hidden="true">↑</span>
+            <strong id="beforePrompt">Drop an image here</strong>
+            <span>or <u>browse from your device</u></span>
+            <small>PNG, JPG, WEBP · up to 20 MB</small>
+          </label>
+          <div class="file-status" id="beforeStatus" aria-live="polite">
+            <span class="status-check" aria-hidden="true">✓</span>
+            <span>No image selected</span>
+          </div>
+        </article>
+
+        <div class="versus" aria-hidden="true"><span>VS</span></div>
+
+        <article class="upload-card upload-card--after">
+          <div class="card-heading">
+            <div>
+              <span class="step">02</span>
+              <h2>Second Image</h2>
+            </div>
+            <span class="image-badge image-badge--violet">Second</span>
+          </div>
+          <label class="dropzone" id="afterDropzone" for="afterInput">
+            <input id="afterInput" type="file" accept="image/*" />
+            <span class="upload-icon" aria-hidden="true">↑</span>
+            <strong id="afterPrompt">Drop an image here</strong>
+            <span>or <u>browse from your device</u></span>
+            <small>PNG, JPG, WEBP · up to 20 MB</small>
+          </label>
+          <div class="file-status" id="afterStatus" aria-live="polite">
+            <span class="status-check" aria-hidden="true">✓</span>
+            <span>No image selected</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="workspace" aria-label="Image comparison workspace">
+        <div class="workspace-header">
+          <div>
+            <p class="eyebrow">Comparison canvas</p>
+            <h2>Drag the handle to compare</h2>
+          </div>
+          <div class="toolbar">
+            <span class="toolbar-label">Direction</span>
+            <div
+              class="segmented-control"
+              role="group"
+              aria-label="Comparison direction"
+            >
+              <button
+                class="direction-button is-active"
+                type="button"
+                data-direction="horizontal"
+                aria-pressed="true"
+              >
+                <span
+                  class="direction-icon direction-icon--horizontal"
+                  aria-hidden="true"
+                ></span>
+                Horizontal
+              </button>
+              <button
+                class="direction-button"
+                type="button"
+                data-direction="vertical"
+                aria-pressed="false"
+              >
+                <span
+                  class="direction-icon direction-icon--vertical"
+                  aria-hidden="true"
+                ></span>
+                Vertical
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="comparison-frame is-empty" id="comparisonFrame">
+          <div class="empty-canvas" id="emptyCanvas">
+            <span class="canvas-icon" aria-hidden="true">◫</span>
+            <strong>Your comparison will appear here</strong>
+            <span>Upload both images above to get started</span>
+          </div>
+          <div class="comparison-canvas" id="comparisonCanvas" hidden>
+            <img
+              class="comparison-image comparison-image--before"
+              id="beforeImage"
+              alt="First Image"
+            />
+            <div class="comparison-clip" id="comparisonClip">
+              <img
+                class="comparison-image comparison-image--after"
+                id="afterImage"
+                alt="Second Image"
+              />
+            </div>
+            <div class="comparison-divider" id="comparisonDivider">
+              <button
+                class="drag-handle"
+                id="dragHandle"
+                type="button"
+                role="slider"
+                aria-label="Comparison position"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="50"
+              >
+                <span class="handle-arrows" aria-hidden="true"></span>
+              </button>
+            </div>
+            <span class="canvas-label canvas-label--before">First</span>
+            <span class="canvas-label canvas-label--after">Second</span>
+          </div>
+        </div>
+
+        <div class="workspace-footer">
+          <span
+            ><kbd>←</kbd><kbd>→</kbd> Move handle
+            <span class="footer-separator">·</span> <kbd>Shift</kbd> + arrows
+            for larger steps</span
+          >
+          <div class="workspace-actions">
+            <button class="text-button" id="swapButton" type="button">
+              ↔ <span>Swap images</span>
+            </button>
+            <button class="text-button" id="resetButton" type="button">
+              ↺ <span>Reset position</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <span>Made for precise visual checks</span>
+        <span class="footer-mark"
+          >IMAGECOMPARE <b>•</b> ANPrince <b>•</b> 2026</span
+        >
+      </footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

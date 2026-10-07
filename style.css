@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+:root {
+  --ink: #1b1c22;
+  --muted: #777983;
+  --line: #e3e5ec;
+  --soft: #f5f6fa;
+  --purple: #6558e8;
+  --purple-dark: #5146c9;
+  --green: #2f9d72;
+  --orange: #f67c5a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #fbfbfd;
+  font-family: "DM Sans", sans-serif;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.app-shell { max-width: 1190px; margin: 0 auto; padding: 0 34px 28px; }
+.topbar { height: 89px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+.brand { color: var(--ink); display: inline-flex; gap: 11px; align-items: center; font: 700 19px "Space Grotesk", sans-serif; letter-spacing: -.4px; text-decoration: none; }
+.brand-mark { width: 27px; height: 27px; padding: 4px; display: flex; gap: 3px; border-radius: 8px; background: var(--purple); transform: rotate(-7deg); }
+.brand-mark span { flex: 1; border-radius: 2px; background: #fff; }.brand-mark span:last-child { opacity: .45; }
+.topbar-note { color: #92949d; display: flex; align-items: center; gap: 8px; font: 500 11px "DM Mono", monospace; letter-spacing: .1px; }
+.status-dot { width: 7px; height: 7px; background: #5bc28f; border-radius: 50%; box-shadow: 0 0 0 3px #e6f7ef; }
+
+.hero { max-width: 640px; padding: 68px 0 45px; }.eyebrow { color: var(--purple); margin: 0 0 14px; font: 500 11px "DM Mono", monospace; letter-spacing: 1.5px; text-transform: uppercase; }
+h1 { margin: 0; font: 600 clamp(43px, 6vw, 67px)/.99 "Space Grotesk", sans-serif; letter-spacing: -3px; }
+h1 em { color: var(--purple); font-style: normal; }
+.hero-copy { max-width: 420px; color: var(--muted); margin: 24px 0 0; font-size: 16px; line-height: 1.55; }
+
+.upload-grid { display: grid; grid-template-columns: 1fr 32px 1fr; align-items: center; gap: 22px; }
+.upload-card { min-width: 0; border: 1px solid var(--line); padding: 22px; border-radius: 12px; background: #fff; box-shadow: 0 5px 20px rgba(30, 33, 54, .025); }
+.card-heading { display: flex; justify-content: space-between; align-items: start; margin-bottom: 18px; }.card-heading > div { display: flex; align-items: baseline; gap: 9px; }
+.step { color: #a4a6af; font: 500 10px "DM Mono", monospace; }.card-heading h2 { margin: 0; font: 600 16px "Space Grotesk", sans-serif; }
+.image-badge { color: #cf5e42; background: #fff0eb; padding: 5px 9px; border-radius: 4px; font: 500 10px "DM Mono", monospace; }.image-badge--violet { color: var(--purple); background: #f0efff; }
+.dropzone { height: 170px; display: flex; align-items: center; flex-direction: column; justify-content: center; border: 1px dashed #c8cbd6; border-radius: 7px; background: #fbfbfd; color: #8a8c96; transition: border .2s, background .2s; cursor: pointer; }
+.dropzone:hover, .dropzone.is-dragging { border-color: var(--purple); background: #f7f6ff; }.dropzone input { display: none; }
+.upload-icon { width: 31px; height: 31px; margin-bottom: 11px; color: var(--purple); display: grid; place-items: center; border: 1px solid #c8c4ff; border-radius: 8px; font-size: 23px; line-height: 1; }
+.dropzone strong { color: var(--ink); margin-bottom: 5px; font-size: 13px; }.dropzone span { font-size: 12px; }.dropzone u { color: var(--purple); text-underline-offset: 2px; }.dropzone small { margin-top: 13px; color: #b0b1ba; font: 10px "DM Mono", monospace; }
+.file-status { min-height: 18px; color: #a2a3ac; display: flex; gap: 7px; align-items: center; margin-top: 12px; font: 10px "DM Mono", monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }.file-status.has-file { color: #4f9b78; }.status-check { width: 14px; height: 14px; display: grid; place-items: center; border-radius: 50%; color: transparent; background: #ececf0; font-size: 9px; }.has-file .status-check { color: white; background: var(--green); }
+.versus { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: #a4a6af; font: 10px "DM Mono", monospace; }
+
+.workspace { margin-top: 73px; }.workspace-header { display: flex; justify-content: space-between; align-items: end; margin-bottom: 20px; }.workspace-header h2 { margin: 0; font: 600 25px "Space Grotesk", sans-serif; letter-spacing: -.8px; }.toolbar { display: flex; align-items: center; gap: 12px; }.toolbar-label { color: #92939c; font: 10px "DM Mono", monospace; text-transform: uppercase; letter-spacing: 1px; }
+.segmented-control { display: flex; gap: 3px; padding: 3px; background: #eeeff4; border-radius: 7px; }.direction-button { border: 0; padding: 8px 11px; display: flex; align-items: center; gap: 7px; border-radius: 5px; color: #8a8c96; background: transparent; font-size: 11px; }.direction-button.is-active { color: var(--ink); background: #fff; box-shadow: 0 1px 4px #d9dae0; }
+.direction-icon { width: 13px; height: 13px; display: inline-block; position: relative; }.direction-icon:before, .direction-icon:after { content: ""; position: absolute; background: currentColor; }.direction-icon--horizontal:before { left: 6px; top: 1px; width: 1px; height: 11px; }.direction-icon--horizontal:after { top: 1px; left: 2px; width: 9px; height: 1px; box-shadow: 0 10px currentColor; }.direction-icon--vertical:before { top: 6px; left: 1px; width: 11px; height: 1px; }.direction-icon--vertical:after { top: 2px; left: 1px; width: 1px; height: 9px; box-shadow: 10px 0 currentColor; }
+
+.comparison-frame { position: relative; min-height: 510px; overflow: hidden; border: 1px solid #dfe1e9; border-radius: 10px; background: #e8e9ee; box-shadow: 0 9px 30px rgba(36, 38, 55, .05); }.comparison-frame.is-empty { background: repeating-conic-gradient(#f3f4f7 0 25%, #edeef2 0 50%) 50% / 18px 18px; }
+.empty-canvas { min-height: 510px; display: flex; align-items: center; flex-direction: column; justify-content: center; color: #a0a2ac; gap: 8px; }.empty-canvas strong { color: #6c6f7a; font: 600 14px "Space Grotesk", sans-serif; }.empty-canvas > span:last-child { font-size: 12px; }.canvas-icon { width: 42px; height: 42px; margin-bottom: 6px; display: grid; place-items: center; border: 1px solid #c9cbd4; border-radius: 12px; color: #8c8f9b; font-size: 23px; background: #f7f8fa; }
+.comparison-canvas { position: absolute; inset: 0; overflow: hidden; }.comparison-image { width: 100%; height: 100%; display: block; object-fit: contain; }.comparison-image--before { position: absolute; inset: 0; }.comparison-clip { position: absolute; inset: 0; overflow: visible; pointer-events: none; }.comparison-image--after { position: absolute; inset: 0; max-width: none; pointer-events: none; }.comparison-divider { position: absolute; z-index: 2; top: 0; bottom: 0; left: 50%; width: 2px; display: flex; justify-content: center; background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.1); transform: translateX(-50%); }.drag-handle { width: 38px; height: 38px; padding: 0; align-self: center; border: 2px solid #fff; border-radius: 50%; background: var(--purple); box-shadow: 0 2px 8px rgba(35, 31, 105, .35); transform: translateX(0); }.handle-arrows { display: block; width: 14px; height: 8px; margin: auto; position: relative; border-left: 1.5px solid #fff; border-right: 1.5px solid #fff; }.handle-arrows:before, .handle-arrows:after { content: ""; position: absolute; top: 2px; width: 6px; height: 6px; border-top: 1.5px solid white; border-left: 1.5px solid white; }.handle-arrows:before { left: -4px; transform: rotate(-45deg); }.handle-arrows:after { right: -4px; transform: rotate(135deg); }
+.canvas-label { position: absolute; z-index: 3; top: 14px; padding: 5px 8px; color: #fff; background: rgba(27,28,34,.55); border-radius: 3px; font: 10px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .7px; }.canvas-label--before { left: 14px; }.canvas-label--after { right: 14px; }
+.workspace-footer { min-height: 62px; display: flex; justify-content: space-between; align-items: center; color: #999ba4; font: 10px "DM Mono", monospace; }.workspace-footer kbd { padding: 3px 5px; border: 1px solid #dedfe6; border-radius: 3px; background: #fff; color: #71737c; font-size: 10px; }.footer-separator { margin: 0 8px; color: #d1d2d8; }.workspace-actions { display: flex; gap: 22px; }.text-button { padding: 0; border: 0; color: #858792; background: transparent; font: 10px "DM Mono", monospace; }.text-button:hover { color: var(--purple); }
+.site-footer { display: flex; justify-content: space-between; padding-top: 29px; border-top: 1px solid var(--line); color: #aaabb3; font: 10px "DM Mono", monospace; }.footer-mark { letter-spacing: .5px; }.footer-mark b { color: var(--purple); margin: 0 5px; }
+
+.comparison-canvas.is-vertical .comparison-divider { top: 50%; bottom: auto; left: 0; width: 100%; height: 2px; transform: translateY(-50%); }.comparison-canvas.is-vertical .drag-handle { transform: rotate(90deg); }
+
+@media (max-width: 700px) { .app-shell { padding: 0 18px 24px; }.topbar { height: 72px; }.topbar-note { display: none; }.hero { padding: 47px 0 33px; } h1 { letter-spacing: -2px; }.upload-grid { grid-template-columns: 1fr; gap: 12px; }.versus { margin: -5px auto; }.workspace { margin-top: 52px; }.workspace-header { align-items: start; flex-direction: column; gap: 17px; }.comparison-frame, .empty-canvas { min-height: 360px; }.workspace-footer { align-items: start; flex-direction: column; gap: 16px; padding: 16px 0; }.site-footer { gap: 12px; flex-direction: column; }.toolbar { width: 100%; justify-content: space-between; } }
