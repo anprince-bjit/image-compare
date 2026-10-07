@@ -84,37 +84,30 @@
             <h2>Drag the handle to compare</h2>
           </div>
           <div class="toolbar">
-            <span class="toolbar-label">Direction</span>
-            <div
-              class="segmented-control"
-              role="group"
-              aria-label="Comparison direction"
-            >
-              <button
-                class="direction-button is-active"
-                type="button"
-                data-direction="horizontal"
-                aria-pressed="true"
-              >
-                <span
-                  class="direction-icon direction-icon--horizontal"
-                  aria-hidden="true"
-                ></span>
-                Horizontal
-              </button>
-              <button
-                class="direction-button"
-                type="button"
-                data-direction="vertical"
-                aria-pressed="false"
-              >
-                <span
-                  class="direction-icon direction-icon--vertical"
-                  aria-hidden="true"
-                ></span>
-                Vertical
-              </button>
+            <div class="toolbar-group">
+              <span class="toolbar-label">Compare using</span>
+              <div class="segmented-control" role="group" aria-label="Comparison mode">
+                <button class="mode-button is-active" type="button" data-mode="split" aria-pressed="true">Split</button>
+                <button class="mode-button" type="button" data-mode="alpha" aria-pressed="false">Alpha</button>
+              </div>
             </div>
+            <div class="toolbar-group direction-group">
+              <span class="toolbar-label">Direction</span>
+              <div class="segmented-control" role="group" aria-label="Comparison direction">
+                <button class="direction-button is-active" type="button" data-direction="horizontal" aria-pressed="true">
+                  <span class="direction-icon direction-icon--horizontal" aria-hidden="true"></span>
+                  Horizontal
+                </button>
+                <button class="direction-button" type="button" data-direction="vertical" aria-pressed="false">
+                  <span class="direction-icon direction-icon--vertical" aria-hidden="true"></span>
+                  Vertical
+                </button>
+              </div>
+            </div>
+            <label class="alpha-control" for="alphaRange">
+              <span class="toolbar-label">Second opacity <output id="alphaValue">50%</output></span>
+              <input id="alphaRange" type="range" min="0" max="100" value="50" />
+            </label>
           </div>
         </div>
 

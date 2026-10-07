@@ -3,6 +3,8 @@ const state = {
   afterUrl: null,
   position: 50,
   direction: "horizontal",
+  mode: "split",
+  alpha: 50,
   dragging: false,
 };
 
@@ -15,6 +17,8 @@ const elements = {
   handle: document.querySelector("#dragHandle"),
   beforeImage: document.querySelector("#beforeImage"),
   afterImage: document.querySelector("#afterImage"),
+  alphaRange: document.querySelector("#alphaRange"),
+  alphaValue: document.querySelector("#alphaValue"),
   beforeInput: document.querySelector("#beforeInput"),
   afterInput: document.querySelector("#afterInput"),
   beforeStatus: document.querySelector("#beforeStatus"),
@@ -32,6 +36,15 @@ function updateCanvas() {
   elements.canvas.hidden = !ready;
   elements.frame.classList.toggle("is-empty", !ready);
   if (!ready) return;
+
+  elements.canvas.classList.toggle("is-alpha", state.mode === "alpha");
+  elements.afterImage.style.opacity = state.mode === "alpha" ? state.alpha / 100 : "1";
+  elements.divider.hidden = state.mode === "alpha";
+  elements.alphaValue.textContent = `${state.alpha}%`;
+  if (state.mode === "alpha") {
+    elements.afterImage.style.clipPath = "none";
+    return;
+  }
 
   const value = `${state.position}%`;
   if (state.direction === "horizontal") {
@@ -126,6 +139,25 @@ document.querySelectorAll(".direction-button").forEach((button) => {
     });
     updateCanvas();
   });
+});
+
+document.querySelectorAll(".mode-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    state.mode = button.dataset.mode;
+    document.querySelectorAll(".mode-button").forEach((item) => {
+      const active = item === button;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+    document.querySelector(".direction-group").classList.toggle("is-disabled", state.mode === "alpha");
+    document.querySelector(".alpha-control").classList.toggle("is-visible", state.mode === "alpha");
+    updateCanvas();
+  });
+});
+
+elements.alphaRange.addEventListener("input", () => {
+  state.alpha = Number(elements.alphaRange.value);
+  updateCanvas();
 });
 
 document.querySelector("#resetButton").addEventListener("click", () => {
