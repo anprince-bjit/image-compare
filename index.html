@@ -81,7 +81,7 @@
         <div class="workspace-header">
           <div>
             <p class="eyebrow">Comparison canvas</p>
-            <h2>Drag the handle to compare</h2>
+            <h2>Explore the differences</h2>
           </div>
           <div class="toolbar">
             <div class="toolbar-group">
@@ -89,6 +89,7 @@
               <div class="segmented-control" role="group" aria-label="Comparison mode">
                 <button class="mode-button is-active" type="button" data-mode="split" aria-pressed="true">Split</button>
                 <button class="mode-button" type="button" data-mode="alpha" aria-pressed="false">Alpha</button>
+                <button class="mode-button" type="button" data-mode="hitmap" aria-pressed="false">Hit map</button>
               </div>
             </div>
             <div class="toolbar-group direction-group">
@@ -108,6 +109,10 @@
               <span class="toolbar-label">Second opacity <output id="alphaValue">50%</output></span>
               <input id="alphaRange" type="range" min="0" max="100" value="50" />
             </label>
+            <label class="hitmap-control" for="hitmapThreshold">
+              <span class="toolbar-label">Sensitivity <output id="hitmapValue">20</output></span>
+              <input id="hitmapThreshold" type="range" min="0" max="100" value="20" />
+            </label>
           </div>
         </div>
 
@@ -118,6 +123,7 @@
             <span>Upload both images above to get started</span>
           </div>
           <div class="comparison-canvas" id="comparisonCanvas" hidden>
+            <canvas class="hitmap-canvas" id="hitmapCanvas" aria-label="Image mismatch hit map"></canvas>
             <img
               class="comparison-image comparison-image--before"
               id="beforeImage"
